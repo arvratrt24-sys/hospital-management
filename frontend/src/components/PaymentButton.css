@@ -1,0 +1,125 @@
+.btn-payment {
+  background: #27ae60;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-payment:hover {
+  background: #229954;
+  transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.payment-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.payment-info p {
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.fee-amount {
+  color: #27ae60;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.payment-method {
+  margin-bottom: 1.5rem;
+}
+
+.payment-method label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.payment-method select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-confirm-payment,
+.btn-cancel-modal {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-confirm-payment {
+  background: #27ae60;
+  color: white;
+  flex: 1;
+}
+
+.btn-confirm-payment:hover:not(:disabled) {
+  background: #229954;
+}
+
+.btn-confirm-payment:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.btn-cancel-modal {
+  background: #95a5a6;
+  color: white;
+}
+
+.btn-cancel-modal:hover:not(:disabled) {
+  background: #7f8c8d;
+}
