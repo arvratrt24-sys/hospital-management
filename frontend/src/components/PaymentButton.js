@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api'; // ⭐ Added import
 import './PaymentButton.css';
-
-const API_URL = '/api';
 
 function PaymentButton({ appointment, onPaymentSuccess }) {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +11,7 @@ function PaymentButton({ appointment, onPaymentSuccess }) {
   const handlePayment = async () => {
     setProcessing(true);
     try {
-      const response = await axios.put(`${API_URL}/appointments/${appointment._id}`, {
+      const response = await axios.put(`${API_BASE_URL}/api/appointments/${appointment._id}`, { // ⭐ Updated
         paymentStatus: 'Paid',
         paymentMethod: paymentMethod,
         status: 'Scheduled'

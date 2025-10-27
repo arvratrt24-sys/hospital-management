@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './PatientList.css'; // Reusing the same CSS
-
-const API_URL = '/api'; // Changed to match other components
+import API_BASE_URL from '../config/api'; // ⭐ Added import
+import './PatientList.css';
 
 function DoctorList() {
   const [doctors, setDoctors] = useState([]);
@@ -24,7 +23,7 @@ function DoctorList() {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get(`${API_URL}/doctors`);
+      const response = await axios.get(`${API_BASE_URL}/api/doctors`); // ⭐ Updated
       setDoctors(response.data);
     } catch (error) {
       console.error('Error fetching doctors:', error);
@@ -43,10 +42,10 @@ function DoctorList() {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`${API_URL}/doctors/${editingId}`, formData);
+        await axios.put(`${API_BASE_URL}/api/doctors/${editingId}`, formData); // ⭐ Updated
         alert('Doctor updated successfully!');
       } else {
-        await axios.post(`${API_URL}/doctors`, formData);
+        await axios.post(`${API_BASE_URL}/api/doctors`, formData); // ⭐ Updated
         alert('Doctor added successfully!');
       }
       resetForm();
@@ -74,7 +73,7 @@ function DoctorList() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this doctor?')) {
       try {
-        await axios.delete(`${API_URL}/doctors/${id}`);
+        await axios.delete(`${API_BASE_URL}/api/doctors/${id}`); // ⭐ Updated
         alert('Doctor deleted successfully!');
         fetchDoctors();
       } catch (error) {

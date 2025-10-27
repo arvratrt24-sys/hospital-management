@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api'; // ⭐ Added import
 import './PatientList.css'; 
 import PaymentButton from './PaymentButton';
-
-const API_URL = '/api';
 
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
@@ -23,7 +22,7 @@ function AppointmentList() {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get(`${API_URL}/appointments`);
+      const response = await axios.get(`${API_BASE_URL}/api/appointments`); // ⭐ Updated
       setAppointments(response.data);
     } catch (error) { 
       console.error('Error fetching appointments:', error); 
@@ -33,14 +32,14 @@ function AppointmentList() {
   
   const fetchPatients = async () => {
     try {
-      const response = await axios.get(`${API_URL}/patients`);
+      const response = await axios.get(`${API_BASE_URL}/api/patients`); // ⭐ Updated
       setPatients(response.data);
     } catch (error) { console.error('Error fetching patients:', error); }
   };
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get(`${API_URL}/doctors`);
+      const response = await axios.get(`${API_BASE_URL}/api/doctors`); // ⭐ Updated
       setDoctors(response.data);
     } catch (error) { console.error('Error fetching doctors:', error); }
   };
@@ -57,10 +56,10 @@ function AppointmentList() {
     }
     try {
       if (editingId) {
-        await axios.put(`${API_URL}/appointments/${editingId}`, formData);
+        await axios.put(`${API_BASE_URL}/api/appointments/${editingId}`, formData); // ⭐ Updated
         alert('Appointment updated successfully!');
       } else {
-        await axios.post(`${API_URL}/appointments`, formData);
+        await axios.post(`${API_BASE_URL}/api/appointments`, formData); // ⭐ Updated
         alert('Appointment created successfully! Please proceed to payment.');
       }
       resetForm();
@@ -86,7 +85,7 @@ function AppointmentList() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this appointment?')) {
       try {
-        await axios.delete(`${API_URL}/appointments/${id}`);
+        await axios.delete(`${API_BASE_URL}/api/appointments/${id}`); // ⭐ Updated
         alert('Appointment deleted successfully!');
         fetchAppointments();
       } catch (error) {
